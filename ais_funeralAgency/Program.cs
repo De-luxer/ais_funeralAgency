@@ -6,6 +6,18 @@ using System.Windows.Forms;
 
 namespace ais_funeralAgency
 {
+    static class Auth
+    {
+        //Статичное поле, которое хранит значение статуса авторизации
+        public static bool auth = false;
+        //Статичное поле, которое хранит значения ID пользователя
+        public static string auth_id = null;
+        //Статичное поле, которое хранит значения ФИО пользователя
+        public static string auth_fio = null;
+        //Статичное поле, которое хранит количество привелегий пользователя
+        public static int auth_role = 666;
+    }
+
     internal static class Program
     {
         /// <summary>
@@ -16,7 +28,7 @@ namespace ais_funeralAgency
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Auto());
+            Application.Run(new Main());
         }
     }
 }
