@@ -45,7 +45,8 @@ namespace ais_funeralAgency
             // устанавливаем соединение с БД
             conn.Open();
             // запрос
-            string sql = $"SELECT * FROM Accounts WHERE login_accounts='{login_user}'";
+            //string sql = $"SELECT * FROM Accounts WHERE login_accounts='{login_user}'";
+            string sql = $"SELECT * FROM Employees JOIN Accounts ON Employees.account_employees = Accounts.id_accounts JOIN Positions ON Employees.position_employees = Positions.id_positions JOIN StatusEmployees ON Employees.status_employees = StatusEmployees.id_statusEmployees WHERE Accounts.login_accounts = '{login_user}';";
             // объект для выполнения SQL-запроса
             MySqlCommand command = new MySqlCommand(sql, conn);
             // объект для чтения ответа сервера
@@ -56,7 +57,7 @@ namespace ais_funeralAgency
                 // элементы массива [] - это значения столбцов из запроса SELECT
                 Auth.auth_id = reader[0].ToString();
                 Auth.auth_fio = reader[1].ToString();
-                Auth.auth_role = Convert.ToInt32(reader[3].ToString());
+                Auth.auth_role = Convert.ToInt32(reader[10].ToString());
             }
             reader.Close(); // закрываем reader
             // закрываем соединение с БД
@@ -71,7 +72,8 @@ namespace ais_funeralAgency
         private void button1_Click(object sender, EventArgs e)
         {
             //Запрос в БД на предмет того, если ли строка с подходящим логином и паролем
-            string sql = "SELECT * FROM Accounts WHERE login_accounts = @un and  pass_accounts= @up";
+            //string sql = "SELECT * FROM Accounts WHERE login_accounts = @un and  pass_accounts= @up";
+            string sql = "SELECT * FROM Employees JOIN Accounts ON Employees.account_employees = Accounts.id_accounts JOIN Positions ON Employees.position_employees = Positions.id_positions JOIN StatusEmployees ON Employees.status_employees = StatusEmployees.id_statusEmployees WHERE Accounts.login_accounts = @un and  Accounts.pass_accounts= @up";
             //Открытие соединения
             conn.Open();
             //Объявляем таблицу

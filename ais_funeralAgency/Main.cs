@@ -68,9 +68,9 @@ namespace ais_funeralAgency
                 //Отображаем рабочую форму
                 this.Show();
                 //Вытаскиваем из класса поля в label
-                label1.Text = Auth.auth_fio;
+                label3.Text = $"Здравствуйте {Auth.auth_fio}";
                 //Красим текст в label в зелёный цвет
-                label1.ForeColor = Color.Green;
+                label3.ForeColor = Color.Green;
                 ManagerRole(Auth.auth_role);
             }
             //иначе
