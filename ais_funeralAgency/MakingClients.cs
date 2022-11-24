@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace ais_funeralAgency
 {
-    public partial class MakingOrders : Form
+    public partial class MakingClients : Form
     {
-        public MakingOrders()
+        public MakingClients()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
