@@ -74,5 +74,12 @@ namespace ais_funeralAgency
                 this.Close();
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MakingOrders mOrders = new MakingOrders();
+            mOrders.ShowDialog();
+        }
     }
 }

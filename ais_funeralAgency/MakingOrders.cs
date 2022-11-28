@@ -19,7 +19,16 @@ namespace ais_funeralAgency
 
         private void button1_Click(object sender, EventArgs e)
         {
+            MakingClients mClients = new MakingClients();
+            mClients.ShowDialog();
+        }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            /*Main main = new Main();
+            main.Show();
+            this.Close();
+            */
         }
     }
 }
