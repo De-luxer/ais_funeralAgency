@@ -102,7 +102,9 @@ namespace ais_funeralAgency
                 //Достаем данные пользователя в случае успеха
                 GetUserInfo(textBox1.Text);
                 //Закрываем форму
-                this.Close();
+                this.Hide();
+                Main main = new Main();
+                main.Show();
             }
             else
             {

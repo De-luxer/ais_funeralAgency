@@ -17,17 +17,18 @@ namespace ais_funeralAgency
         {
             InitializeComponent();
         }
+        string connStr = "server=chuc.caseum.ru;port=33333;user=st_3_20_11;database=is_3_20_st11_KURS;password=67959087";
         //Переменная соединения
         MySqlConnection conn;
 
         private void Auto_Load(object sender, EventArgs e)
         {
-            string connStr = "server=chuc.caseum.ru;port=33333;user=st_3_20_11;database=is_3_20_st11_KURS;password=67959087";
-            conn = new MySqlConnection(connStr);
+            
         }
 
         public bool InsertPrepods(string name, string phone, string adress)
         {
+            conn = new MySqlConnection(connStr);
             //определяем переменную, хранящую количество вставленных строк
             int InsertCount = 0;
             //Объявляем переменную храняющую результат операции
@@ -70,13 +71,9 @@ namespace ais_funeralAgency
             string c_name = textBox1.Text;
             string c_phone = textBox2.Text;
             string c_adress = textBox3.Text;
-            if (InsertPrepods(c_name, c_phone, c_adress)) 
+            if (InsertPrepods(c_name, c_phone, c_adress))
             {
-                label6.Visible = true;            
-            }
-            else
-            {
-                MessageBox.Show("Произошла ошибка.", "Ошибка");
+                label6.Visible = true;
             }
         }
     }

@@ -54,15 +54,9 @@ namespace ais_funeralAgency
         }
 
         private void Main_Load(object sender, EventArgs e)
-        {
-            this.Hide();
-            Auto auto = new Auto();
-            auto.ShowDialog();
-            
+        {   
             if (Auth.auth)
             {
-                //Отображаем рабочую форму
-                this.Show();
                 //Вытаскиваем из класса поля в label
                 label3.Text = $"Здравствуйте {Auth.auth_fio}";
                 ManagerRole(Auth.auth_role);
@@ -79,7 +73,12 @@ namespace ais_funeralAgency
         {
             this.Hide();
             MakingOrders mOrders = new MakingOrders();
-            mOrders.ShowDialog();
+            mOrders.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

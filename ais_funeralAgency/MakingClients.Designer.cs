@@ -127,9 +127,9 @@ namespace ais_funeralAgency
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(119, 456);
+            this.button1.Location = new System.Drawing.Point(131, 434);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(232, 34);
+            this.button1.Size = new System.Drawing.Size(209, 34);
             this.button1.TabIndex = 8;
             this.button1.Text = "Добавление клиента";
             this.button1.UseVisualStyleBackColor = true;
@@ -140,7 +140,7 @@ namespace ais_funeralAgency
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label6.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label6.Location = new System.Drawing.Point(174, 503);
+            this.label6.Location = new System.Drawing.Point(170, 481);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(122, 16);
             this.label6.TabIndex = 9;
@@ -152,7 +152,7 @@ namespace ais_funeralAgency
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(498, 565);
+            this.ClientSize = new System.Drawing.Size(498, 539);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label5);

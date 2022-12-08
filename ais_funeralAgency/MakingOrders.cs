@@ -25,10 +25,9 @@ namespace ais_funeralAgency
 
         private void button3_Click(object sender, EventArgs e)
         {
-            /*Main main = new Main();
+            this.Hide();
+            Main main = new Main();
             main.Show();
-            this.Close();
-            */
         }
     }
 }
