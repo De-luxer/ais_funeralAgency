@@ -27,17 +27,40 @@ namespace ais_funeralAgency
                     button1.Enabled = true;
                     button2.Enabled = true;
                     button3.Enabled = true;
+                    button5.Enabled = true;
+                    button6.Enabled = true;
+
                     button1.Visible = true;
                     button2.Visible = true;
                     button3.Visible = true;
+                    button5.Visible = true;
+                    button6.Visible = true;
                     break;
                 case 1:
                     button1.Enabled = true;
                     button2.Enabled = true;
                     button3.Enabled = false;
+                    button5.Enabled = true;
+                    button6.Enabled = false;
+
                     button1.Visible = true;
                     button2.Visible = true;
                     button3.Visible = false;
+                    button5.Visible = true;
+                    button6.Visible = false;
+                    break;
+                case 2:
+                    button1.Enabled = false;
+                    button2.Enabled = true;
+                    button3.Enabled = false;
+                    button5.Enabled = false;
+                    button6.Enabled = true;
+
+                    button1.Visible = false;
+                    button2.Visible = true;
+                    button3.Visible = false;
+                    button5.Visible = false;
+                    button6.Visible = true;
                     break;
                 //Если по какой то причине в классе ничего не содержится, то всё отключается вообще
                 default:
@@ -46,9 +69,14 @@ namespace ais_funeralAgency
                     button1.Enabled = false;
                     button2.Enabled = false;
                     button3.Enabled = false;
+                    button5.Enabled = false;
+                    button6.Enabled = false;
+
                     button1.Visible = false;
                     button2.Visible = false;
                     button3.Visible = false;
+                    button5.Visible = false;
+                    button6.Visible = false;
                     break;
             }
         }

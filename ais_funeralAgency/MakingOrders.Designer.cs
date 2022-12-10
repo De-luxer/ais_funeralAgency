@@ -53,6 +53,7 @@ namespace ais_funeralAgency
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -85,6 +86,7 @@ namespace ais_funeralAgency
             // 
             this.panel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.comboBox5);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.textBox2);
@@ -105,16 +107,16 @@ namespace ais_funeralAgency
             this.panel2.Controls.Add(this.comboBox2);
             this.panel2.Controls.Add(this.comboBox1);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(167, 182);
+            this.panel2.Location = new System.Drawing.Point(170, 157);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1156, 615);
+            this.panel2.Size = new System.Drawing.Size(1156, 662);
             this.panel2.TabIndex = 2;
             // 
             // comboBox5
             // 
             this.comboBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(301, 300);
+            this.comboBox5.Location = new System.Drawing.Point(301, 358);
             this.comboBox5.Name = "comboBox5";
             this.comboBox5.Size = new System.Drawing.Size(272, 28);
             this.comboBox5.TabIndex = 20;
@@ -122,7 +124,7 @@ namespace ais_funeralAgency
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(400, 260);
+            this.label9.Location = new System.Drawing.Point(400, 318);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(75, 24);
             this.label9.TabIndex = 19;
@@ -130,7 +132,7 @@ namespace ais_funeralAgency
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(21, 300);
+            this.textBox2.Location = new System.Drawing.Point(21, 357);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(272, 29);
             this.textBox2.TabIndex = 18;
@@ -138,7 +140,7 @@ namespace ais_funeralAgency
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(98, 260);
+            this.label8.Location = new System.Drawing.Point(98, 318);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(119, 24);
             this.label8.TabIndex = 17;
@@ -147,7 +149,7 @@ namespace ais_funeralAgency
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(925, 175);
+            this.label7.Location = new System.Drawing.Point(922, 205);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(143, 24);
             this.label7.TabIndex = 16;
@@ -155,7 +157,7 @@ namespace ais_funeralAgency
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(860, 214);
+            this.textBox1.Location = new System.Drawing.Point(857, 243);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(272, 29);
             this.textBox1.TabIndex = 15;
@@ -163,7 +165,7 @@ namespace ais_funeralAgency
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(664, 175);
+            this.radioButton3.Location = new System.Drawing.Point(659, 205);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(113, 28);
             this.radioButton3.TabIndex = 14;
@@ -173,27 +175,31 @@ namespace ais_funeralAgency
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(346, 539);
+            this.button2.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(348, 590);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(217, 33);
             this.button2.TabIndex = 13;
             this.button2.Text = "Создание заказа";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(589, 539);
+            this.button1.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(591, 590);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(217, 33);
             this.button1.TabIndex = 12;
             this.button1.Text = "Добавить клиента";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(333, 175);
+            this.radioButton2.Location = new System.Drawing.Point(341, 205);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(192, 28);
             this.radioButton2.TabIndex = 11;
@@ -204,7 +210,7 @@ namespace ais_funeralAgency
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(70, 175);
+            this.radioButton1.Location = new System.Drawing.Point(82, 205);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(151, 28);
             this.radioButton1.TabIndex = 10;
@@ -296,13 +302,24 @@ namespace ais_funeralAgency
             // 
             // button3
             // 
+            this.button3.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.button3.ForeColor = System.Drawing.Color.White;
             this.button3.Location = new System.Drawing.Point(12, 106);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(126, 33);
             this.button3.TabIndex = 3;
             this.button3.Text = "На главную";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(17, 500);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(134, 24);
+            this.label10.TabIndex = 21;
+            this.label10.Text = "Общая сумма:";
             // 
             // MakingOrders
             // 
@@ -352,5 +369,6 @@ namespace ais_funeralAgency
         private System.Windows.Forms.ComboBox comboBox5;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label10;
     }
 }
