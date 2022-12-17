@@ -69,7 +69,7 @@ namespace ais_funeralAgency
         public void GetListUsers()
         {
             //Запрос для вывода строк в БД
-            string commandStr = "SELECT * FROM Orders JOIN TypeOrders ON Orders.type_orders = TypeOrders.id_typeOrders JOIN Status ON Orders.status_orders = Status.id_status JOIN Employees ON Orders.nameEmpl_orders = Employees.id_employees JOIN Clients ON Orders.nameClient_orders = Clients.id_clients;";
+            string commandStr = "SELECT Orders.id_orders, Orders.dataStart_orders, Orders.dataEnd_orders, Orders.price_orders, Orders.nameDeceased_orders, Orders.lifeYears_orders, Type.id_type, Type.title_type, Type.price_type, Type.amount_type, TypeCategories.title__typeCategories, Status.title_status, Employees.id_employees, Employees.name_employees, Employees.phone_employees, Positions.title_positions, StatusEmployees.title_statusEmployees, Clients.id_clients, Clients.name_clients, Clients.phone_clients, Clients.address_clients FROM Orders LEFT JOIN Orders_Type ON Orders.id_orders = Orders_Type.Orders_Type_orderID LEFT JOIN Type ON Orders_Type.Orders_Type_typeID = Type.id_type LEFT JOIN TypeCategories ON Type.categories_type = TypeCategories.id_typeCategories LEFT JOIN Status ON Orders.status_orders = Status.id_status LEFT JOIN Employees ON Orders.nameEmpl_orders = Employees.id_employees LEFT JOIN Positions ON Employees.position_employees = Positions.id_positions LEFT JOIN StatusEmployees ON Employees.status_employees = StatusEmployees.id_statusEmployees LEFT JOIN Clients ON Orders.nameClient_orders = Clients.id_clients;";
             //Открываем соединение
             conn.Open();
             //Объявляем команду, которая выполнить запрос в соединении conn
@@ -78,12 +78,12 @@ namespace ais_funeralAgency
             MyDA.Fill(table);
             //Указываем, что источником данных в bindingsource является заполненная выше таблица
             bSource.DataSource = table;
-            //Указываем, что источником данных ДатаГрида является bindingsource 
+            //Указываем, что источником данных ДатаГрида является bindingsource
             dataGridView1.DataSource = bSource;
             //Закрываем соединение
             conn.Close();
             //Отражаем количество записей в ДатаГриде
-            int count_rows = dataGridView1.RowCount - 1;
+            int count_rows = dataGridView1.RowCount;
             label4.Text = (count_rows).ToString();
         }
 
@@ -123,7 +123,7 @@ namespace ais_funeralAgency
             dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             */
             //Убираем заголовки строк
-            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.RowHeadersVisible = true;
             //Показываем заголовки столбцов
             dataGridView1.ColumnHeadersVisible = true;
         }
