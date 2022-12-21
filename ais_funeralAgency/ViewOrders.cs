@@ -46,7 +46,7 @@ namespace ais_funeralAgency
             //Указываем ID выделенной строки в метке
             label3.Text = id_selected_rows;
         }
-
+        
         public void ChangeStateStudent()
         {
             //Получаем ID изменяемого студента
@@ -74,8 +74,11 @@ namespace ais_funeralAgency
         {
             //Чистим виртуальную таблицу
             table.Clear();
+            id_selected_rows = "0";
+            label3.Text = "";
             //Вызываем метод получения записей, который вновь заполнит таблицу
             GetListUsers();
+
         }
 
         public void GetListUsers()
@@ -97,37 +100,24 @@ namespace ais_funeralAgency
             //Отражаем количество записей в ДатаГриде
             int count_rows = dataGridView1.RowCount;
             label4.Text = (count_rows).ToString();
-            GetSelectedIDString();
+            //GetSelectedIDString();
         }
 
         private void ViewOrders_Load(object sender, EventArgs e)
         {
             // строка подключения к БД
-            string connStr = "server=10.90.12.110;port=33333;user=st_3_20_11;database=is_3_20_st11_KURS;password=67959087";
+            string connStr = "server=chuc.caseum.ru;port=33333;user=st_3_20_11;database=is_3_20_st11_KURS;password=67959087";
             // создаём объект для подключения к БД
             conn = new MySqlConnection(connStr);
             //Вызываем метод для заполнение дата Грида
             GetListUsers();
-            //Видимость полей в гриде
             /*
-            dataGridView1.Columns[0].Visible = true;
-            dataGridView1.Columns[1].Visible = true;
-            dataGridView1.Columns[2].Visible = true;
-            dataGridView1.Columns[3].Visible = true;
-            dataGridView1.Columns[4].Visible = true;
-
             //Ширина полей
             dataGridView1.Columns[0].FillWeight = 15;
             dataGridView1.Columns[1].FillWeight = 40;
             dataGridView1.Columns[2].FillWeight = 15;
             dataGridView1.Columns[3].FillWeight = 15;
             dataGridView1.Columns[4].FillWeight = 15;
-            //Режим для полей "Только для чтения"
-            dataGridView1.Columns[0].ReadOnly = true;
-            dataGridView1.Columns[1].ReadOnly = true;
-            dataGridView1.Columns[2].ReadOnly = true;
-            dataGridView1.Columns[3].ReadOnly = true;
-            dataGridView1.Columns[4].ReadOnly = true;
             //Растягивание полей грида
             dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -135,6 +125,7 @@ namespace ais_funeralAgency
             dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             */
+            //Режим для полей "Только для чтения"
             dataGridView1.Columns[0].ReadOnly = true;
             dataGridView1.Columns[1].ReadOnly = true;
             dataGridView1.Columns[2].ReadOnly = true;
@@ -159,7 +150,15 @@ namespace ais_funeralAgency
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            //Магические строки
+            dataGridView1.CurrentCell = dataGridView1[e.ColumnIndex, e.RowIndex];
+            dataGridView1.CurrentRow.Selected = true;
+            //Метод получения ID выделенной строки в глобальную переменную
             GetSelectedIDString();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
             ChangeStateStudent();
         }
     }
