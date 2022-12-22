@@ -100,7 +100,6 @@ namespace ais_funeralAgency
             //Отражаем количество записей в ДатаГриде
             int count_rows = dataGridView1.RowCount;
             label4.Text = (count_rows).ToString();
-            //GetSelectedIDString();
         }
 
         private void ViewOrders_Load(object sender, EventArgs e)
@@ -148,18 +147,49 @@ namespace ais_funeralAgency
             reload_list();
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show($"Изменить данные в заказе № {id_selected_rows}?", "Изменеие данных", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                ChangeStateStudent();
+            }
+        }
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //Магические строки
-            dataGridView1.CurrentCell = dataGridView1[e.ColumnIndex, e.RowIndex];
+            try
+            {
+                dataGridView1.CurrentCell = dataGridView1[e.ColumnIndex, e.RowIndex];
+            }
+            catch
+            {
+
+            }
             dataGridView1.CurrentRow.Selected = true;
             //Метод получения ID выделенной строки в глобальную переменную
             GetSelectedIDString();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        public void dataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            ChangeStateStudent();
+            e.Control.KeyPress -= new KeyPressEventHandler(ColumnKeyPress);
+            if (dataGridView1.CurrentCell.ColumnIndex == 11)
+            {
+                TextBox textBox = e.Control as TextBox;
+                if (textBox != null)
+                {
+                    textBox.KeyPress += new KeyPressEventHandler(ColumnKeyPress);
+                }
+            }
+        }
+
+        public void ColumnKeyPress (object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

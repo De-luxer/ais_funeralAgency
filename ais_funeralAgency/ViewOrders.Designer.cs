@@ -38,7 +38,6 @@ namespace ais_funeralAgency
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -90,6 +89,7 @@ namespace ais_funeralAgency
             this.dataGridView1.Size = new System.Drawing.Size(1361, 667);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView1_EditingControlShowing);
             // 
             // button3
             // 
@@ -108,12 +108,13 @@ namespace ais_funeralAgency
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.BackColor = System.Drawing.Color.DarkSlateGray;
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(1329, 920);
+            this.button2.Location = new System.Drawing.Point(1197, 920);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(126, 33);
             this.button2.TabIndex = 6;
             this.button2.Text = "Изменить";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label3
             // 
@@ -138,7 +139,7 @@ namespace ais_funeralAgency
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.BackColor = System.Drawing.Color.DarkSlateGray;
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(1197, 920);
+            this.button1.Location = new System.Drawing.Point(1329, 920);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(126, 33);
             this.button1.TabIndex = 9;
@@ -146,26 +147,12 @@ namespace ais_funeralAgency
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button4
-            // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(994, 920);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(197, 33);
-            this.button4.TabIndex = 10;
-            this.button4.Text = "Внести изменения";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
             // ViewOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1467, 965);
-            this.Controls.Add(this.button4);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -199,6 +186,5 @@ namespace ais_funeralAgency
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button4;
     }
 }
