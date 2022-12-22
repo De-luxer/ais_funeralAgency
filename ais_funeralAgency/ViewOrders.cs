@@ -58,7 +58,7 @@ namespace ais_funeralAgency
             // устанавливаем соединение с БД
             conn.Open();
             // запрос обновления данных
-            string query2 = $"UPDATE Orders SET Orders.lifeYears_orders='{dataGridView1.Rows[Convert.ToInt32(index_selected_rows)].Cells[5].Value.ToString()}'  WHERE (Orders.id_orders='{redact_id}')";
+            string query2 = $"UPDATE Orders LEFT JOIN Status ON Orders.status_orders = Status.id_status SET Orders.price_orders='{dataGridView1.Rows[Convert.ToInt32(index_selected_rows)].Cells[3].Value}', Orders.nameDeceased_orders='{dataGridView1.Rows[Convert.ToInt32(index_selected_rows)].Cells[4].Value.ToString()}', Orders.lifeYears_orders='{dataGridView1.Rows[Convert.ToInt32(index_selected_rows)].Cells[5].Value.ToString()}', Status.id_status='{dataGridView1.Rows[Convert.ToInt32(index_selected_rows)].Cells[11].Value}' WHERE (Orders.id_orders='{redact_id}')";
             // объект для выполнения SQL-запроса
             MySqlCommand command = new MySqlCommand(query2, conn);
             // выполняем запрос
@@ -84,7 +84,7 @@ namespace ais_funeralAgency
         public void GetListUsers()
         {
             //Запрос для вывода строк в БД
-            string commandStr = "SELECT Orders.id_orders, Orders.dataStart_orders, Orders.dataEnd_orders, Orders.price_orders, Orders.nameDeceased_orders, Orders.lifeYears_orders, Type.id_type, Type.title_type, Type.price_type, Type.amount_type, TypeCategories.title__typeCategories, Status.id_status, Status.title_status, Employees.id_employees, Employees.name_employees, Employees.phone_employees, Positions.title_positions, StatusEmployees.title_statusEmployees, Clients.id_clients, Clients.name_clients, Clients.phone_clients, Clients.address_clients FROM Orders LEFT JOIN Orders_Type ON Orders.id_orders = Orders_Type.Orders_Type_orderID LEFT JOIN Type ON Orders_Type.Orders_Type_typeID = Type.id_type LEFT JOIN TypeCategories ON Type.categories_type = TypeCategories.id_typeCategories LEFT JOIN Status ON Orders.status_orders = Status.id_status LEFT JOIN Employees ON Orders.nameEmpl_orders = Employees.id_employees LEFT JOIN Positions ON Employees.position_employees = Positions.id_positions LEFT JOIN StatusEmployees ON Employees.status_employees = StatusEmployees.id_statusEmployees LEFT JOIN Clients ON Orders.nameClient_orders = Clients.id_clients;";
+            string commandStr = "SELECT Orders.id_orders AS 'Номер заказа', Orders.dataStart_orders AS 'Дата создания заказа', Orders.dataEnd_orders AS 'Дата завершения заказа', Orders.price_orders AS 'Итоговая сумма', Orders.nameDeceased_orders AS 'Имя умршего', Orders.lifeYears_orders AS 'Годы жизни умершего', Type.id_type AS 'Номер услуги', Type.title_type AS 'Название услуги', Type.price_type AS 'Стоимость услуги', Type.amount_type AS 'Количестов товара', TypeCategories.title__typeCategories AS 'Категория', Status.id_status AS 'Номер статуса', Status.title_status AS 'Статус заказа', Employees.id_employees AS 'Номер сотрудника', Employees.name_employees AS 'Имя сотрудника', Employees.phone_employees AS 'Телефон сотрудника', Positions.title_positions AS 'Должность', StatusEmployees.title_statusEmployees AS 'Статус сотрудника', Clients.id_clients AS 'Номер клиента', Clients.name_clients AS 'Имя клиента', Clients.phone_clients AS 'Телефон клиента', Clients.address_clients AS 'Адрес клиента' FROM Orders LEFT JOIN Orders_Type ON Orders.id_orders = Orders_Type.Orders_Type_orderID LEFT JOIN Type ON Orders_Type.Orders_Type_typeID = Type.id_type LEFT JOIN TypeCategories ON Type.categories_type = TypeCategories.id_typeCategories LEFT JOIN Status ON Orders.status_orders = Status.id_status LEFT JOIN Employees ON Orders.nameEmpl_orders = Employees.id_employees LEFT JOIN Positions ON Employees.position_employees = Positions.id_positions LEFT JOIN StatusEmployees ON Employees.status_employees = StatusEmployees.id_statusEmployees LEFT JOIN Clients ON Orders.nameClient_orders = Clients.id_clients;";
             //Открываем соединение
             conn.Open();
             //Объявляем команду, которая выполнить запрос в соединении conn
@@ -105,12 +105,14 @@ namespace ais_funeralAgency
         private void ViewOrders_Load(object sender, EventArgs e)
         {
             // строка подключения к БД
-            string connStr = "server=chuc.caseum.ru;port=33333;user=st_3_20_11;database=is_3_20_st11_KURS;password=67959087";
+            string connStr = "server=10.90.12.110;port=33333;user=st_3_20_11;database=is_3_20_st11_KURS;password=67959087";
             // создаём объект для подключения к БД
             conn = new MySqlConnection(connStr);
             //Вызываем метод для заполнение дата Грида
             GetListUsers();
             /*
+            //Ширина полей
+            dataGridView1.Columns[0].FillWeight = 50;
             //Ширина полей
             dataGridView1.Columns[0].FillWeight = 15;
             dataGridView1.Columns[1].FillWeight = 40;
@@ -128,7 +130,11 @@ namespace ais_funeralAgency
             dataGridView1.Columns[0].ReadOnly = true;
             dataGridView1.Columns[1].ReadOnly = true;
             dataGridView1.Columns[2].ReadOnly = true;
-            dataGridView1.Columns[3].ReadOnly = true;
+            dataGridView1.Columns[6].ReadOnly = true;
+            dataGridView1.Columns[7].ReadOnly = true;
+            dataGridView1.Columns[8].ReadOnly = true;
+            dataGridView1.Columns[9].ReadOnly = true;
+            dataGridView1.Columns[10].ReadOnly = true;
             //Убираем заголовки строк
             dataGridView1.RowHeadersVisible = true;
             //Показываем заголовки столбцов
@@ -174,7 +180,7 @@ namespace ais_funeralAgency
         public void dataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             e.Control.KeyPress -= new KeyPressEventHandler(ColumnKeyPress);
-            if (dataGridView1.CurrentCell.ColumnIndex == 11)
+            if (dataGridView1.CurrentCell.ColumnIndex == 3 || dataGridView1.CurrentCell.ColumnIndex == 11)
             {
                 TextBox textBox = e.Control as TextBox;
                 if (textBox != null)
