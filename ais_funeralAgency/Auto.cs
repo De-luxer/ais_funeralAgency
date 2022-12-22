@@ -19,7 +19,7 @@ namespace ais_funeralAgency
         }
 
         // строка подключения к БД
-        string connStr = "server=10.90.12.110;port=33333;user=st_3_20_11;database=is_3_20_st11_KURS;password=67959087";
+        string connStr = "server=chuc.caseum.ru;port=33333;user=st_3_20_11;database=is_3_20_st11_KURS;password=67959087";
         //Переменная соединения
         MySqlConnection conn;
         //Логин и пароль к данной форме Вы сможете посмотреть в БД db_test таблице t_user
