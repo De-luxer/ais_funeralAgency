@@ -32,6 +32,7 @@ namespace ais_funeralAgency
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -53,7 +54,8 @@ namespace ais_funeralAgency
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -86,6 +88,8 @@ namespace ais_funeralAgency
             // 
             this.panel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel2.Controls.Add(this.label11);
+            this.panel2.Controls.Add(this.richTextBox1);
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.comboBox5);
             this.panel2.Controls.Add(this.label9);
@@ -111,6 +115,15 @@ namespace ais_funeralAgency
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1156, 662);
             this.panel2.TabIndex = 2;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(17, 500);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(134, 24);
+            this.label10.TabIndex = 21;
+            this.label10.Text = "Общая сумма:";
             // 
             // comboBox5
             // 
@@ -312,14 +325,22 @@ namespace ais_funeralAgency
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // label10
+            // richTextBox1
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(17, 500);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(134, 24);
-            this.label10.TabIndex = 21;
-            this.label10.Text = "Общая сумма:";
+            this.richTextBox1.Location = new System.Drawing.Point(579, 358);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(272, 121);
+            this.richTextBox1.TabIndex = 22;
+            this.richTextBox1.Text = "";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(616, 318);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(211, 24);
+            this.label11.TabIndex = 23;
+            this.label11.Text = "Комментарии к заказу";
             // 
             // MakingOrders
             // 
@@ -370,5 +391,7 @@ namespace ais_funeralAgency
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }

@@ -47,7 +47,7 @@ namespace ais_funeralAgency
             label3.Text = id_selected_rows;
         }
         
-        public void ChangeStateStudent()
+        public void UpdateOrders()
         {
             //Получаем ID изменяемого студента
             string redact_id = id_selected_rows;
@@ -58,7 +58,7 @@ namespace ais_funeralAgency
             // устанавливаем соединение с БД
             conn.Open();
             // запрос обновления данных
-            string query2 = $"UPDATE Orders SET Orders.price_orders='{dataGridView1.Rows[Convert.ToInt32(index_selected_rows)].Cells[3].Value}', Orders.nameDeceased_orders='{dataGridView1.Rows[Convert.ToInt32(index_selected_rows)].Cells[4].Value.ToString()}', Orders.lifeYears_orders='{dataGridView1.Rows[Convert.ToInt32(index_selected_rows)].Cells[5].Value.ToString()}', Orders.status_orders='{dataGridView1.Rows[Convert.ToInt32(index_selected_rows)].Cells[11].Value}', Orders.nameEmpl_orders='{dataGridView1.Rows[Convert.ToInt32(index_selected_rows)].Cells[13].Value}', Orders.nameClient_orders='{dataGridView1.Rows[Convert.ToInt32(index_selected_rows)].Cells[18].Value}' WHERE (Orders.id_orders='{redact_id}')";
+            string query2 = $"UPDATE Orders SET Orders.price_orders='{dataGridView1.Rows[Convert.ToInt32(index_selected_rows)].Cells[3].Value}', Orders.nameDeceased_orders='{dataGridView1.Rows[Convert.ToInt32(index_selected_rows)].Cells[4].Value.ToString()}', Orders.lifeYears_orders='{dataGridView1.Rows[Convert.ToInt32(index_selected_rows)].Cells[5].Value.ToString()}', Orders.comments_orders='{dataGridView1.Rows[Convert.ToInt32(index_selected_rows)].Cells[6].Value.ToString()}', Orders.status_orders='{dataGridView1.Rows[Convert.ToInt32(index_selected_rows)].Cells[12].Value}', Orders.nameEmpl_orders='{dataGridView1.Rows[Convert.ToInt32(index_selected_rows)].Cells[14].Value}', Orders.nameClient_orders='{dataGridView1.Rows[Convert.ToInt32(index_selected_rows)].Cells[19].Value}' WHERE (Orders.id_orders='{redact_id}')";
             // объект для выполнения SQL-запроса
             MySqlCommand command = new MySqlCommand(query2, conn);
             // выполняем запрос
@@ -84,7 +84,7 @@ namespace ais_funeralAgency
         public void GetListUsers()
         {
             //Запрос для вывода строк в БД
-            string commandStr = "SELECT Orders.id_orders AS 'Номер заказа', Orders.dataStart_orders AS 'Дата создания заказа', Orders.dataEnd_orders AS 'Дата завершения заказа', Orders.price_orders AS 'Итоговая сумма', Orders.nameDeceased_orders AS 'Имя умршего', Orders.lifeYears_orders AS 'Годы жизни умершего', Type.id_type AS 'Номер услуги', Type.title_type AS 'Название услуги', Type.price_type AS 'Стоимость услуги', Type.amount_type AS 'Количестов товара', TypeCategories.title__typeCategories AS 'Категория', Orders.status_orders AS 'Номер статуса', Status.title_status AS 'Статус заказа', Orders.nameEmpl_orders AS 'Номер сотрудника', Employees.name_employees AS 'Имя сотрудника', Employees.phone_employees AS 'Телефон сотрудника', Positions.title_positions AS 'Должность', StatusEmployees.title_statusEmployees AS 'Статус сотрудника', Orders.nameClient_orders AS 'Номер клиента', Clients.name_clients AS 'Имя клиента', Clients.phone_clients AS 'Телефон клиента', Clients.address_clients AS 'Адрес клиента' FROM Orders LEFT JOIN Orders_Type ON Orders.id_orders = Orders_Type.Orders_Type_orderID LEFT JOIN Type ON Orders_Type.Orders_Type_typeID = Type.id_type LEFT JOIN TypeCategories ON Type.categories_type = TypeCategories.id_typeCategories LEFT JOIN Status ON Orders.status_orders = Status.id_status LEFT JOIN Employees ON Orders.nameEmpl_orders = Employees.id_employees LEFT JOIN Positions ON Employees.position_employees = Positions.id_positions LEFT JOIN StatusEmployees ON Employees.status_employees = StatusEmployees.id_statusEmployees LEFT JOIN Clients ON Orders.nameClient_orders = Clients.id_clients;";
+            string commandStr = "SELECT Orders.id_orders AS 'Номер заказа', Orders.dataStart_orders AS 'Дата создания заказа', Orders.dataEnd_orders AS 'Дата завершения заказа', Orders.price_orders AS 'Итоговая сумма', Orders.nameDeceased_orders AS 'Имя умршего', Orders.lifeYears_orders AS 'Годы жизни умершего', Orders.comments_orders AS 'Комментарий к закзау', Type.id_type AS 'Номер услуги', Type.title_type AS 'Название услуги', Type.price_type AS 'Стоимость услуги', Type.amount_type AS 'Количество товара', TypeCategories.title__typeCategories AS 'Категория', Orders.status_orders AS 'Номер статуса', Status.title_status AS 'Статус заказа', Orders.nameEmpl_orders AS 'Номер сотрудника', Employees.name_employees AS 'Имя сотрудника', Employees.phone_employees AS 'Телефон сотрудника', Positions.title_positions AS 'Должность', StatusEmployees.title_statusEmployees AS 'Статус сотрудника', Orders.nameClient_orders AS 'Номер клиента', Clients.name_clients AS 'Имя клиента', Clients.phone_clients AS 'Телефон клиента', Clients.address_clients AS 'Адрес клиента' FROM Orders LEFT JOIN Orders_Type ON Orders.id_orders = Orders_Type.Orders_Type_orderID LEFT JOIN Type ON Orders_Type.Orders_Type_typeID = Type.id_type LEFT JOIN TypeCategories ON Type.categories_type = TypeCategories.id_typeCategories LEFT JOIN Status ON Orders.status_orders = Status.id_status LEFT JOIN Employees ON Orders.nameEmpl_orders = Employees.id_employees LEFT JOIN Positions ON Employees.position_employees = Positions.id_positions LEFT JOIN StatusEmployees ON Employees.status_employees = StatusEmployees.id_statusEmployees LEFT JOIN Clients ON Orders.nameClient_orders = Clients.id_clients;";
             //Открываем соединение
             conn.Open();
             //Объявляем команду, которая выполнить запрос в соединении conn
@@ -100,6 +100,7 @@ namespace ais_funeralAgency
             //Отражаем количество записей в ДатаГриде
             int count_rows = dataGridView1.RowCount;
             label4.Text = (count_rows).ToString();
+
         }
 
         private void ViewOrders_Load(object sender, EventArgs e)
@@ -110,31 +111,37 @@ namespace ais_funeralAgency
             conn = new MySqlConnection(connStr);
             //Вызываем метод для заполнение дата Грида
             GetListUsers();
-            /*
-            //Ширина полей
-            dataGridView1.Columns[0].FillWeight = 50;
-            //Ширина полей
-            dataGridView1.Columns[0].FillWeight = 15;
-            dataGridView1.Columns[1].FillWeight = 40;
-            dataGridView1.Columns[2].FillWeight = 15;
-            dataGridView1.Columns[3].FillWeight = 15;
-            dataGridView1.Columns[4].FillWeight = 15;
-            //Растягивание полей грида
-            dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            */
             //Режим для полей "Только для чтения"
             dataGridView1.Columns[0].ReadOnly = true;
             dataGridView1.Columns[1].ReadOnly = true;
             dataGridView1.Columns[2].ReadOnly = true;
-            dataGridView1.Columns[6].ReadOnly = true;
             dataGridView1.Columns[7].ReadOnly = true;
             dataGridView1.Columns[8].ReadOnly = true;
             dataGridView1.Columns[9].ReadOnly = true;
             dataGridView1.Columns[10].ReadOnly = true;
+            //Ширина полей
+            dataGridView1.Columns[0].Width = 80;
+            dataGridView1.Columns[1].Width = 110;
+            dataGridView1.Columns[2].Width = 110;
+            dataGridView1.Columns[4].Width = 300;
+            dataGridView1.Columns[5].Width = 210;
+            dataGridView1.Columns[6].Width = 150;
+            dataGridView1.Columns[7].Width = 80;
+            dataGridView1.Columns[8].Width = 180;
+            dataGridView1.Columns[9].Width = 110;
+            dataGridView1.Columns[10].Width = 116;
+            dataGridView1.Columns[11].Width = 110;
+            dataGridView1.Columns[12].Width = 80;
+            dataGridView1.Columns[13].Width = 110;
+            dataGridView1.Columns[14].Width = 115;
+            dataGridView1.Columns[15].Width = 300;
+            dataGridView1.Columns[16].Width = 140;
+            dataGridView1.Columns[17].Width = 150;
+            dataGridView1.Columns[18].Width = 130;
+            dataGridView1.Columns[19].Width = 90;
+            dataGridView1.Columns[20].Width = 300;
+            dataGridView1.Columns[21].Width = 140;
+            dataGridView1.Columns[22].Width = 300;
             //Убираем заголовки строк
             dataGridView1.RowHeadersVisible = true;
             //Показываем заголовки столбцов
@@ -157,7 +164,7 @@ namespace ais_funeralAgency
         {
             if (MessageBox.Show($"Изменить данные в заказе № {id_selected_rows}?", "Изменеие данных", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                ChangeStateStudent();
+                UpdateOrders();
             }
         }
 
@@ -180,7 +187,7 @@ namespace ais_funeralAgency
         public void dataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             e.Control.KeyPress -= new KeyPressEventHandler(ColumnKeyPress);
-            if (dataGridView1.CurrentCell.ColumnIndex == 3 || dataGridView1.CurrentCell.ColumnIndex == 11)
+            if (dataGridView1.CurrentCell.ColumnIndex == 3 || dataGridView1.CurrentCell.ColumnIndex == 12)
             {
                 TextBox textBox = e.Control as TextBox;
                 if (textBox != null)
