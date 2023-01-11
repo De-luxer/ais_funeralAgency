@@ -15,7 +15,7 @@ namespace ais_funeralAgency
         //Статичное поле, которое хранит значения ФИО пользователя
         public static string auth_fio = null;
         //Статичное поле, которое хранит количество привелегий пользователя
-        public static int auth_role = 666;
+        public static int auth_role = -666;
     }
 
     internal static class Program

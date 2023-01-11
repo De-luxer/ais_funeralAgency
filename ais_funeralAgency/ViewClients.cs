@@ -86,7 +86,6 @@ namespace ais_funeralAgency
 
         public void reload_list()
         {
-
             //Обнуляем id выбраной записи
             id_selected_rows = "0";
             label3.Text = "";
@@ -118,7 +117,6 @@ namespace ais_funeralAgency
             //Отражаем количество записей в ДатаГриде
             int count_rows = dataGridView1.RowCount;
             label4.Text = (count_rows).ToString();
-
         }
 
         private void ViewClients_Load(object sender, EventArgs e)

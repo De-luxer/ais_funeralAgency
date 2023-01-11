@@ -116,6 +116,12 @@
     <Compile Include="ViewClients.Designer.cs">
       <DependentUpon>ViewClients.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewEmployees.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewEmployees.Designer.cs">
+      <DependentUpon>ViewEmployees.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewOrders.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +151,9 @@
     </Compile>
     <EmbeddedResource Include="ViewClients.resx">
       <DependentUpon>ViewClients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewEmployees.resx">
+      <DependentUpon>ViewEmployees.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewOrders.resx">
       <DependentUpon>ViewOrders.cs</DependentUpon>

@@ -122,5 +122,12 @@ namespace ais_funeralAgency
             ViewClients vClients = new ViewClients();
             vClients.Show();
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ViewEmployees vEmployees = new ViewEmployees();
+            vEmployees.Show();
+        }
     }
 }
