@@ -84,7 +84,6 @@ namespace ais_funeralAgency
             table.Clear();
             //Вызываем метод получения записей, который вновь заполнит таблицу
             GetListUsers();
-
         }
 
         public void GetListUsers()
@@ -141,12 +140,12 @@ namespace ais_funeralAgency
             dataGridView1.Columns[13].Width = 110;
             dataGridView1.Columns[14].Width = 115;
             dataGridView1.Columns[15].Width = 300;
-            dataGridView1.Columns[16].Width = 140;
+            dataGridView1.Columns[16].Width = 175;
             dataGridView1.Columns[17].Width = 150;
             dataGridView1.Columns[18].Width = 130;
             dataGridView1.Columns[19].Width = 90;
             dataGridView1.Columns[20].Width = 300;
-            dataGridView1.Columns[21].Width = 140;
+            dataGridView1.Columns[21].Width = 175;
             dataGridView1.Columns[22].Width = 300;
             //Убираем заголовки строк
             dataGridView1.RowHeadersVisible = true;

@@ -115,5 +115,12 @@ namespace ais_funeralAgency
             ViewOrders vOrders = new ViewOrders();
             vOrders.Show();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ViewClients vClients = new ViewClients();
+            vClients.Show();
+        }
     }
 }
